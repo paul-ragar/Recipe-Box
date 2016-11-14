@@ -1,0 +1,30 @@
+{
+  "name": "recipe-box",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paul-ragar/Recipe-Box.git"
+  },
+  "author": "Paul Ragar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paul-ragar/Recipe-Box/issues"
+  },
+  "homepage": "https://github.com/paul-ragar/Recipe-Box#readme",
+  "dependencies": {
+    "bcryptjs": "^2.3.0",
+    "body-parser": "^1.15.2",
+    "cors": "^2.8.1",
+    "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "massive": "^2.5.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "underscore": "^1.8.3"
+  }
+}

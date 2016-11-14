@@ -1,0 +1,20 @@
+<button class="login-signup-button" ui-sref="home" type="button" name="button">Home</button>
+
+
+<section class="login-container">
+  <form ng-submit="login(user)" class="login-box">
+    <p class="credential-ptags">Login</p>
+    <input class="input-username" ng-model="user.username" type="text" placeholder="Username"> <br>
+    <input class="input-password" ng-model="user.password" type="password" placeholder="Password"> <br>
+    <button ng-click="login(user)" class="login-button" type="submit">Submit</button>
+    <p class="login-warning">*Please enter both a username and password.</p>
+    <p class="incorrect-warning">*Username or password is incorrect. Please try again.</p>
+    <div class="sign-up-link-box">
+      <ul>
+        <a>Don't have an account?</a>
+        <a ui-sref="sign-up" class="sign-up-link">Sign up</a>
+      </ul>
+    </div>
+  </form>
+
+</section>

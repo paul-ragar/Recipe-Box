@@ -1,0 +1,22 @@
+<button class="login-signup-button" ui-sref="home" type="button" name="button">Home</button>
+
+<section class="sign-up-container">
+  <form ng-submit="register(newUser)" class="sign-up-box">
+    <p class="signup-credential-ptags" >Sign-up</p>
+    <input class="input-sign-up" id="signup-fn" ng-model="newUser.first_name" type="text" placeholder="First Name"> <br>
+    <input class="input-sign-up" id="signup-ln" ng-model="newUser.last_name" type="text" placeholder="Last Name"> <br>
+    <input class="input-sign-up" id="signup-un" ng-model="newUser.username" type="text" placeholder="Username"> <br>
+    <input class="input-sign-up" id="signup-pass" ng-model="newUser.password" type="password" placeholder="Password"> <br>
+    <input class="input-sign-up" id="signup-rpass" type="password" placeholder="Re-Enter Password"> <br>
+    <button class="sign-up-button" type="submit">Submit</button>
+    <p class="signup-warning" id="fill-form">*Please be sure to fill in all fields.</p>
+    <p class="signup-warning" id="invalid-user">*Unable to create new user. Please try again.</p>
+    <div class="login-link-box">
+      <ul>
+        <a>Already have an account?</a>
+        <a ui-sref="login" class="login-link">Login</a>
+      </ul>
+    </div>
+  </form>
+
+</section>

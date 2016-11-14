@@ -1,0 +1,115 @@
+<nav-bar></nav-bar>
+
+<a class="a-tag" ui-sref="my-recipes({id: ''})"> My Recipes </a>&nbsp &nbsp &nbsp
+<a class="a-tag" ui-sref="recipe-box"> Recipe Box </a>&nbsp &nbsp &nbsp
+<a class="a-tag" ui-sref="home"> Log-out </a>
+<div class="">
+  {{displayRecipe.category_name}}
+</div>
+
+
+<section class="my-page-container">
+  <section class="my-page-section">
+    <div class="add-recipe">
+      <div class="add-image" ng-click="popAddRecipe(); getCategories()">
+        <div class="my-recipes-svg">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          	 width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+          <path fill="#5D5E61" d="M51.746,1.608C25.696,0.2,4.026,21.301,1.748,46.562C-0.599,72.575,19.77,94.932,44.926,98.113
+          	c25.266,3.195,49.842-16.212,53.023-41.359c0.287-2.26,0.446-4.493,0.487-6.771C97.968,23.9,77.786,3.015,51.746,1.608z
+          	 M50.03,95.278C25.005,95.728,5.172,74.324,4.734,49.982C4.284,24.959,25.687,5.125,50.03,4.687
+          	c25.025-0.451,44.86,20.952,45.295,45.295C94.876,75.006,75.055,94.827,50.03,95.278z"/>
+          <path fill="#5D5E61" d="M63.976,48.445c-4.14,0-8.281,0-12.421,0c0-4.141,0-8.282,0-12.422c0-2.005-3.11-2.005-3.11,0
+          	c0,4.142,0,8.283,0,12.422c-4.14,0-8.28,0-12.42,0c-2.005,0-2.005,3.109,0,3.109c4.142,0,8.28,0,12.42,0c0,4.143,0,8.283,0,12.423
+          	c0,2.004,3.11,2.004,3.11,0c0-4.14,0-8.28,0-12.423c4.14,0,8.281,0,12.421,0C65.981,51.555,65.981,48.445,63.976,48.445z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="add-recipe-text">
+        <strong>Add New Recipe</strong>
+      </div>
+    </div>
+    <div class="my-page-recipe" ng-repeat="recipe in recipes" ng-click="getDisplayRecipe(recipe.recipe_id)">
+      <div style="background-image: url({{recipe.recipe_img}})" class="recipe-image">
+      </div>
+      <div class="recipe-text-box">
+        <strong class="recipeName">{{recipe.recipe_name}}</strong>
+      </div>
+
+    </div>
+  </section>
+</section>
+
+<section class="pop-up-recipe" ng-click="closePop()">
+
+</section>
+<div class="pop-recipe-container">
+  <div class="x-close" ng-click="closePop()">
+    X
+  </div>
+  <div class="pop-recipe-data">
+    <h1>{{displayRecipe.recipe_name}}</h1>
+    <p>{{displayRecipe.recipe_notes}}</p>
+    <p>{{displayRecipe.serving_size}}</p>
+    <ul ng-repeat="ingredients in displayRecipe.ingredients track by $index">
+      {{displayRecipe.ingredients[$index].ingredient_name}}
+      &nbsp
+      {{displayRecipe.ingredients[$index].measurements}}
+    </ul>
+    <br>
+    <ul ng-repeat="direction in displayRecipe.directions track by $index">
+      {{displayRecipe.directions[$index].directions}}
+    </ul>
+
+  </div>
+  <div class="pop-recipe-image" style="background-image: url({{displayRecipe.recipe_img}})">
+  </div>
+
+</div>
+<!-- ********************** -->
+
+
+<section class="pop-add-recipe" ng-click="closeAddPop()">
+
+</section>
+<div class="pop-add-recipe-container">
+  <div class="x-close" ng-click="closeAddPop()">
+    X
+  </div>
+  <p>Recipe Name</p>
+  <input class="form-recipe-name" ng-model="recipeName" type="text" name="name" placeholder="pizza" value="">
+  <hr>
+  <p>Image URL</p>
+  <input class="form-image-url" ng-model="imageUrl"type="text" name="name" placeholder="http:/..." value="">
+  <hr>
+  <p>Serving Size</p>
+  <input class="form-serving-size" ng-model="servingSize" type="text" name="name" placeholder="2-6" value="">
+  <hr>
+  <p>Which Category?</p>
+      <select class="form-select-category" ng-model="id" ng-options="category.category_id as category.category_name for category in categories">
+        <option value="">Choose One</option>
+
+
+      </select>
+  <hr>
+  <p>Ingredients</p>
+  <input class="form-ingredients" type="text" name="name" placeholder="Spinach" value="" ng-model="newIngredient">
+  <p>Measurement</p>
+  <input class="form-measurement" type="text" name="name" value="" placeholder="4 cups" ng-model="newMeasurement">
+  <button type="button" name="button" ng-click="ingredientArray(newIngredient, newMeasurement)">Add Ingredient</button>
+  <div class="Ingredients-box">
+    <p ng-repeat="ingredient in ingredients">{{ingredient}}: {{measurements[$index]}}</p>
+  </div>
+  <hr>
+  <p>Directions</p>
+  <input class="form-directions" type="text" name="name" placeholder="Bring water to a boil..." value="" ng-model="newDirection">
+  <button type="button" name="button" ng-click="directionArray(newDirection)">Add Direction</button>
+  <div class="direction-box">
+    <p ng-repeat="direction in directions">{{direction}}</p>
+  </div>
+  <hr>
+  <p>Recipe Notes</p>
+  <textarea ng-model="notes" class="form-notes" name="name" rows="8" cols="40" placeholder="Include notes here..."></textarea>
+  <button type="button" name="button" ng-click="closeAddPop()">Cancel</button>
+  <button type="button" name="button" ng-click="postNewRecipe(recipeName, imageUrl, servingSize, id, notes)">Create</button>
+</div>

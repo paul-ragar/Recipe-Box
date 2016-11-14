@@ -1,0 +1,91 @@
+<nav-bar></nav-bar>
+
+<a class="a-tag" ui-sref="my-recipes"> My Recipes </a>&nbsp &nbsp &nbsp
+<a class="a-tag" ng-click="getCategories()"> Recipe Box </a>&nbsp &nbsp &nbsp
+<a class="a-tag" ui-sref="home"> Log-out </a>
+<br>
+
+<button class="edit-button" type="button" name="button" ng-click="editCategories()" ng-show="!isEditing">Edit Categories</button>
+
+<button class="stop-button" type="button" name="button" ng-click="stopEditing()" ng-show="isEditing">Stop Editing</button>
+<section class="category-page-container">
+  <section class="category-page-section">
+    <div class="add-category" ng-click="popAddCategory()">
+      <div class="add-category-image">
+        <div class="recipe-box-svg">
+          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+          	 width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+            <path fill="#5D5E61" d="M51.746,1.608C25.696,0.2,4.026,21.301,1.748,46.562C-0.599,72.575,19.77,94.932,44.926,98.113
+            	c25.266,3.195,49.842-16.212,53.023-41.359c0.287-2.26,0.446-4.493,0.487-6.771C97.968,23.9,77.786,3.015,51.746,1.608z
+            	 M50.03,95.278C25.005,95.728,5.172,74.324,4.734,49.982C4.284,24.959,25.687,5.125,50.03,4.687
+            	c25.025-0.451,44.86,20.952,45.295,45.295C94.876,75.006,75.055,94.827,50.03,95.278z"/>
+            <path fill="#5D5E61" d="M63.976,48.445c-4.14,0-8.281,0-12.421,0c0-4.141,0-8.282,0-12.422c0-2.005-3.11-2.005-3.11,0
+            	c0,4.142,0,8.283,0,12.422c-4.14,0-8.28,0-12.42,0c-2.005,0-2.005,3.109,0,3.109c4.142,0,8.28,0,12.42,0c0,4.143,0,8.283,0,12.423
+            	c0,2.004,3.11,2.004,3.11,0c0-4.14,0-8.28,0-12.423c4.14,0,8.281,0,12.421,0C65.981,51.555,65.981,48.445,63.976,48.445z"/>
+          </svg>
+        </div>
+      </div>
+      <strong class="add-new-category-text">Add New Category</strong>
+    </div>
+
+    <div class="category-page-category"  ng-repeat="category in categories" ng-click="goToRecipes(category.category_id)" ng-init="getRecipeImages($index, category.category_id)">
+      <div style="background-image: url({{images[$index][0].recipe_img}})" class="category-image-container" id="img-one">
+      </div>
+      <div style="background-image: url({{images[$index][1].recipe_img}})" class="category-image-container" id="img-two">
+      </div>
+      <div style="background-image: url({{images[$index][2].recipe_img}})" class="category-image-container" id="img-three">
+      </div>
+      <button class="delete-category-box" id="deleteBox" ng-click="popDelete(); passId(category.category_id, category.category_name)" ng-show="isEditing">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        	 width="50px" height="50px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+        	<g>
+        		<g id="cross">
+        			<g>
+        				<polygon fill="#ffffff" points="612,36.004 576.521,0.603 306,270.608 35.478,0.603 0,36.004 270.522,306.011 0,575.997 35.478,611.397
+        					306,341.411 576.521,611.397 612,575.997 341.459,306.011 			"/>
+        			</g>
+        		</g>
+        	</g>
+        </svg>
+      </button>
+      <div class="category-name-text">
+        <strong class="category-text" ng-show="!isEditing">{{category.category_name}}</strong>
+        <input class="edit-category-text" type="text" name="name" placeholder="{{category.category_name}}" ng-model="newCategoryName" ng-show="isEditing">
+        <button class="edit-text-button" type="button" name="button" ng-click="putNewCategory(category.category_id, newCategoryName)" ng-show="isEditing">Update</button>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="pop-up-category" ng-click="closeAddCategory()">
+
+</section>
+
+<div class="pop-category-container">
+  <p class="add-category-text">
+    Add New Category...
+  </p>
+  <input class="add-category-input" type="text" name="name" value="" ng-model="categoryName">
+  <button type="button" name="button" ng-click="closeAddCategory()">CANCEL</button>
+  <button type="button" name="button" ng-click="addCategory(categoryName)">OKAY</button>
+  <div class="x-close" ng-click="closeAddCategory()">
+    X
+  </div>
+
+</div>
+<!-- ************************* -->
+<section class="pop-up-delete" ng-click="closeDeleteCategory()">
+
+</section>
+
+<div class="verify-delete-container">
+  <p class="delete-category-text">
+    Are you sure you want to delete the category, {{categoryName}}?
+  </p>
+  <button type="button" name="button" ng-click="closeDeleteCategory()">Cancel</button>
+  <button type="button" name="button" ng-click="deleteCategory(category.category_id); getCurrentUser()">Yes</button>
+  <div class="x-close" ng-click="closeDeleteCategory()">
+    X
+  </div>
+
+</div>
