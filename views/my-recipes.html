@@ -64,6 +64,12 @@
 <!-- ********************** -->
 
 
+
+
+
+
+<!-- ////////////////////////////// Add Recipe //// -->
+
 <section class="pop-add-recipe" ng-click="closeAddPop()">
 
 </section>
@@ -71,45 +77,54 @@
   <div class="x-close" ng-click="closeAddPop()">
     X
   </div>
-  <p>Recipe Name</p>
-  <input class="form-recipe-name" ng-model="recipeName" type="text" name="name" placeholder="pizza" value="" tabindex="1">
+  <div class="recipe-name-form">
+    <p>Recipe Name</p>
+    <input class="form-recipe-name" ng-model="recipeName" type="text" name="name" placeholder="pizza" value="" tabindex="1">
+  </div>
   <hr>
-  <p>Image URL</p>
-  <input class="form-image-url" ng-model="imageUrl"type="text" name="name" placeholder="http:/..." value="" tabindex="2">
+  <div class="image-url-form">
+    <p>Image URL</p>
+    <input class="form-image-url" ng-model="imageUrl"type="text" name="name" placeholder="http:/..." value="" tabindex="2">
+  </div>
   <hr>
-  <p>Serving Size</p>
-  <input class="form-serving-size" ng-model="servingSize" type="text" name="name" placeholder="2-6" value="" tabindex="3">
+  <div class="serving-size-form">
+    <p>Serving Size</p>
+    <input class="form-serving-size" ng-model="servingSize" type="text" name="name" placeholder="2-6" value="" tabindex="3">
+  </div>
   <hr>
-  <p>Which Category?</p>
-      <select class="form-select-category" ng-model="id" ng-options="category.category_id as category.category_name for category in categories" tabindex="4">
-        <option value="">Choose One</option>
-
-
-      </select>
+  <div class="which-category-form">
+    <p>Which Category?</p>
+    <select class="form-select-category" ng-model="id" ng-options="category.category_id as category.category_name for category in categories" tabindex="4">
+      <option value="">Choose One</option>
+    </select>
+  </div>
   <hr>
   <div class="recipe-ingredient-form" >
     <p>Ingredients</p>
     <input class="form-ingredients" id="ingredient-input" type="text" name="name" placeholder="Spinach" value="" ng-model="newIngredient" tabindex="5">
     <p>Measurement</p>
     <input class="form-measurement" type="text" name="name" value="" placeholder="4 cups" ng-model="newMeasurement" tabindex="6">
-    <button type="submit" name="button" ng-click="ingredientArray(newIngredient, newMeasurement)">Add Ingredient</button>
+    <button type="submit" name="button" ng-click="ingredientArray(newIngredient, newMeasurement)">Add</button>
   </div>
-
-  <div class="Ingredients-box">
+  <div class="ingredients-box">
     <p ng-repeat="ingredient in ingredients track by $index">{{ingredient}}: {{measurements[$index]}} <button ng-click="deleteIngredient($index)" type="button" name="button">X</button></p>
   </div>
   <hr>
   <div class="directions-form">
     <p>Directions</p>
     <input class="form-directions" type="text" name="name" placeholder="Bring water to a boil..." value="" ng-model="newDirection" tabindex="7">
-    <button type="submit" name="button" ng-click="directionArray(newDirection)">Add Direction</button>
+    <button type="submit" name="button" ng-click="directionArray(newDirection)">Add</button>
   </div>
   <div class="direction-box">
     <p ng-repeat="direction in directions track by $index">Step {{$index + 1}}: {{direction}} <button type="button" name="button" ng-click="deleteDirection($index)">X</button></p>
   </div>
   <hr>
-  <p>Recipe Notes</p>
-  <textarea ng-model="notes" class="form-notes" name="name" rows="8" cols="40" placeholder="Include notes here..." tabindex="8"></textarea>
-  <button type="button" name="button" ng-click="closeAddPop()">Cancel</button>
-  <button type="button" name="button" ng-click="postNewRecipe(recipeName, imageUrl, servingSize, id, notes)">Create</button>
+  <div class="recipe-notes-form">
+    <p>Recipe Notes</p>
+    <textarea ng-model="notes" class="form-notes" name="name" rows="8" cols="40" placeholder="Include notes here..." tabindex="8"></textarea>
+  </div>
+  <div class="add-recipe-buttons">
+    <button type="button" name="button" ng-click="closeAddPop()">Cancel</button>
+    <button type="button" name="button" ng-click="postNewRecipe(recipeName, imageUrl, servingSize, id, notes)">Create</button>
+  </div>
 </form>
