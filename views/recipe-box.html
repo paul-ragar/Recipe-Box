@@ -1,13 +1,10 @@
 <nav-bar></nav-bar>
 
-<a class="a-tag" ui-sref="my-recipes"> My Recipes </a>&nbsp &nbsp &nbsp
-<a class="a-tag" ng-click="getCategories()"> Recipe Box </a>&nbsp &nbsp &nbsp
-<a class="a-tag" ui-sref="home"> Log-out </a>
-<br>
+<div class="stop-button-container">
+  <button class="stop-button" type="button" name="button" ng-click="stopEditing()" ng-show="isEditing">Stop Editing</button>
+</div>
 
-<button class="edit-button" type="button" name="button" ng-click="editCategories()" ng-show="!isEditing">Edit Categories</button>
 
-<button class="stop-button" type="button" name="button" ng-click="stopEditing()" ng-show="isEditing">Stop Editing</button>
 <section class="category-page-container">
   <section class="category-page-section">
     <div class="add-category" ng-click="popAddCategory()">
@@ -58,34 +55,38 @@
 </section>
 
 <section class="pop-up-category" ng-click="closeAddCategory()">
-
 </section>
 
-<div class="pop-category-container">
+<form class="pop-category-container" ng-submit="addCategory(categoryName)">
   <p class="add-category-text">
-    Add New Category...
+    Add New Category
   </p>
-  <input class="add-category-input" type="text" name="name" value="" ng-model="categoryName">
-  <button type="button" name="button" ng-click="closeAddCategory()">CANCEL</button>
-  <button type="button" name="button" ng-click="addCategory(categoryName)">OKAY</button>
+  <input class="add-category-input" type="text" name="name" value="" ng-model="categoryName" placeholder="New Category" tabindex="1">
+  <div class="add-category-button-container">
+    <button class="add-category-button" type="button" name="button" ng-click="closeAddCategory()">CANCEL</button>
+    <button class="add-category-button" type="button" name="button" ng-click="addCategory(categoryName)">OKAY</button>
+  </div>
   <div class="x-close" ng-click="closeAddCategory()">
     X
   </div>
 
-</div>
+</form>
 <!-- ************************* -->
 <section class="pop-up-delete" ng-click="closeDeleteCategory()">
 
 </section>
 
-<div class="verify-delete-container">
+<form class="verify-delete-container">
   <p class="delete-category-text">
-    Are you sure you want to delete the category, {{categoryName}}?
+    Are you sure you want to delete the category, "{{categoryName}}"?
   </p>
-  <button type="button" name="button" ng-click="closeDeleteCategory()">Cancel</button>
-  <button type="button" name="button" ng-click="deleteCategory(category.category_id); getCurrentUser()">Yes</button>
+  <div class="verify-button-container">
+    <button class="verify-buttons"type="button" name="button" ng-click="closeDeleteCategory()">Cancel</button>
+    <button  class="verify-buttons"type="submit" name="button" id="yes-delete" ng-click="deleteCategory(category.category_id); getCurrentUser()">Yes</button>
+  </div>
+
   <div class="x-close" ng-click="closeDeleteCategory()">
     X
   </div>
 
-</div>
+</form>

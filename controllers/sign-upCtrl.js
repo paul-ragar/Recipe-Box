@@ -1,5 +1,6 @@
 angular.module('myApp').controller('sign-upCtrl', function($scope, mainService, $state, $stateParams) {
 
+  $('#signup-fn').focus();
   $scope.register = function(user) {
     if ($("#signup-fn").val() === '' || $("#signup-ln").val() === '' || $("#signup-un").val() === '' || $("#signup-pass").val() === '' || $("#signup-rpass").val() === '') {
       return $('#fill-form').css('display', 'flex');

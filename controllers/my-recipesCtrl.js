@@ -42,6 +42,8 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
       $('.pop-add-recipe').css('visibility', 'visible');
       $('.pop-add-recipe-container').css('visibility', 'visible');
       $('.form-ingredients').val('');
+      $('.form-recipe-name').focus();
+
 
     });
   }
@@ -86,24 +88,36 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
   $scope.ingredients = [];
   $scope.measurements = [];
   $scope.ingredientArray = function(newIngredient, newMeasurement){
-    $scope.ingredients.push(newIngredient);
-    $scope.measurements.push(newMeasurement);
-    $('.form-ingredients').val('');
-    $('.form-measurement').val('');
+    if ($('.form-directions').is(':focus')) {
+      return $scope.directionArray($('.form-directions').val());
+    } else{
+      $scope.ingredients.push(newIngredient);
+      $scope.measurements.push(newMeasurement);
+      $('.form-ingredients').val('');
+      $('.form-measurement').val('');
+      $('#ingredient-input').focus();
+    }
+
+  }
+  $scope.deleteIngredient = function(index) {
+    $scope.ingredients.splice(index, 1);
+    $scope.measurements.splice(index, 1);
   }
   //////////////////////////////
   $scope.directions = [];
   $scope.directionArray = function(direction) {
     $scope.directions.push(direction);
     $('.form-directions').val('');
+    $('.form-directions').focus();
   }
-
+  $scope.deleteDirection = function(index) {
+    $scope.directions.splice(index, 1);
+  }
   $scope.newIngredient = function(name, measurement, recipe_id) {
     mainService.newIngredient(name, measurement, recipe_id);
   }
 
   $scope.getDisplayRecipe = function(id){
-    console.log(id);
     mainService.getDisplayRecipe(id).then(function (response){
       console.log(response);
       $scope.displayRecipe = response;

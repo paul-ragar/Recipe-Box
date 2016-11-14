@@ -45,6 +45,7 @@ angular.module('myApp').controller('recipe-boxCtrl', function(mainService, $scop
   $scope.popAddCategory = function(id) {
     $('.pop-up-category').css('visibility', 'visible');
     $('.pop-category-container').css('visibility', 'visible');
+    $('.add-category-input').focus();
   }
   $scope.goToRecipes = function(id) {
     if ($scope.navigate){
@@ -52,6 +53,7 @@ angular.module('myApp').controller('recipe-boxCtrl', function(mainService, $scop
     }
   }
   $scope.addCategory = function(name) {
+    $('.add-category-input').val('');
     mainService.getCurrentUser().then(function(response){
       var user_id = response.data.user_id;
       mainService.addCategory(name, user_id).then(function (response) {
@@ -99,6 +101,8 @@ angular.module('myApp').controller('recipe-boxCtrl', function(mainService, $scop
   $scope.popDelete = function() {
     $('.pop-up-delete').css('visibility', 'visible');
     $('.verify-delete-container').css('visibility', 'visible');
+    $('#yes-delete').focus();
+
   }
   $scope.closeDeleteCategory = function() {
     $('.pop-up-delete').css('visibility', 'hidden');
