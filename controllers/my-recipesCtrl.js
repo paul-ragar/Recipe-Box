@@ -2,6 +2,20 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
 
   $scope.recipes = recipes;
 
+  $scope.isEditing = false;
+
+
+  $scope.popDelete = function() {
+    $('.pop-up-delete').css('visibility', 'visible');
+    $('.verify-delete-container').css('visibility', 'visible');
+    $('#yes-delete').focus();
+
+  }
+  $scope.closeDeleteCategory = function() {
+    $('.pop-up-delete').css('visibility', 'hidden');
+    $('.verify-delete-container').css('visibility', 'hidden');
+  }
+
   $scope.getRecipes = function() {
     if ($stateParams.id) {
       mainService.getCategoryRecipes($stateParams.id).then(function(response) {
@@ -26,10 +40,13 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
       });
     });
   };
+  $scope.navigate = true;
 
   $scope.popRecipe = function() {
-    $('.pop-up-recipe').css('visibility', 'visible');
-    $('.pop-recipe-container').css('visibility', 'visible');
+    if ($scope.navigate){
+      $('.pop-up-recipe').css('visibility', 'visible');
+      $('.pop-recipe-container').css('visibility', 'visible');
+    }
   }
   $scope.closePop = function() {
     $('.pop-up-recipe').css('visibility', 'hidden');
@@ -127,4 +144,31 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
     });
   }
 
+  $scope.editCategories = function() {
+    $scope.isEditing = true;
+    console.log("Now Editing");
+    $scope.navigate = false;
+  }
+  $scope.stopEditing = function() {
+    $scope.isEditing = false;
+    console.log("Stop Editing");
+    $scope.navigate = true;
+  }
+  $scope.passId = function(to_be_deleted, recipeName) {
+    $scope.to_be_deleted = to_be_deleted;
+    $scope.recipeName = recipeName
+  }
+  $scope.deleteRecipe = function(deleted_one) {
+    deleted_one = $scope.to_be_deleted;
+    mainService.deleteRecipe(deleted_one).then(function (response) {
+      $scope.getRecipes();
+      $scope.closeDeleteCategory();
+    });
+  }
+
+  $scope.goToRecipes = function(id) {
+    if ($scope.navigate){
+      $state.go("my-recipes", {id: id});
+    }
+  }
 });

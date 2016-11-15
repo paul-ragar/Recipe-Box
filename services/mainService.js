@@ -65,6 +65,16 @@ this.deleteCategory = function(deleted_one) {
     return response
   })
 }
+this.deleteRecipe = function(deleted_one) {
+  // console.log(deleted_one);
+  return $http({
+    method: 'DELETE',
+    url: '/delete_recipe/' + deleted_one
+  }).then(function(response){
+// console.log(response);
+    return response
+  })
+}
 
 this.putNewCategory = function(id, name) {
   return $http({

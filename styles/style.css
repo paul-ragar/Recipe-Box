@@ -47,6 +47,8 @@ button {
   border: none;
   border-radius: 2px;
   align-self: center; }
+  .home-login-button:hover {
+    background-color: lightcoral; }
 
 .text-barOne {
   display: flex;
@@ -106,6 +108,8 @@ button {
   border: none;
   border-radius: 2px;
   align-self: center; }
+  .home-signup-button:hover {
+    background-color: lightcoral; }
 
 .login-container {
   background-image: url("https://images.unsplash.com/photo-1466637574441-749b8f19452f?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=353f431dc16ef94d3dcbaaae38fa4109");
@@ -346,6 +350,7 @@ input[type=password]:focus {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  box-shadow: 0px 1px 20px gray;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 20px;
@@ -379,8 +384,10 @@ input[type=password]:focus {
   height: 240px;
   border-radius: 2px 2px 0px 0px;
   display: flex;
+  box-shadow: 0px 1px 20px gray;
   justify-content: center;
   align-items: baseline;
+  position: relative;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 20px;
@@ -429,6 +436,7 @@ input[type=password]:focus {
   min-height: 80%;
   width: 70%;
   position: fixed;
+  box-shadow: 0px 10px 15px gray;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -442,7 +450,12 @@ input[type=password]:focus {
   left: 10px;
   bottom: 10px;
   position: absolute;
-  background-color: lightblue; }
+  display: flex;
+  justify-content: center;
+  flex-direction: column; }
+  .pop-recipe-data h1 {
+    align-self: center;
+    font-size: 24px; }
 
 .pop-recipe-image {
   height: 400px;
@@ -482,10 +495,11 @@ input[type=password]:focus {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  min-height: 80%;
-  max-height: 130%;
-  width: 70%;
-  position: fixed;
+  min-height: 520;
+  max-height: auto;
+  width: 680px;
+  box-shadow: 0px 10px 15px gray;
+  position: absolute;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -515,24 +529,30 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center; }
+  .recipe-name-form p {
+    padding-right: 34px; }
   .recipe-name-form input {
-    width: 450px; }
+    width: 474px; }
 
 .image-url-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center; }
+  .image-url-form p {
+    padding-right: 53px; }
   .image-url-form input {
-    width: 450px; }
+    width: 474px; }
 
 .serving-size-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center; }
+  .serving-size-form p {
+    padding-right: 45px; }
   .serving-size-form input {
-    width: 450px; }
+    width: 474px; }
 
 .which-category-form {
   display: flex;
@@ -546,7 +566,7 @@ input[type=password]:focus {
     margin-top: 7px;
     background-color: lightgray;
     height: 30px;
-    width: 450px;
+    width: 474px;
     text-indent: 10px; }
 
 .recipe-ingredient-form {
@@ -554,8 +574,10 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center; }
+  .recipe-ingredient-form .p-ingredient {
+    padding-right: 50px; }
   .recipe-ingredient-form input {
-    width: 175px;
+    width: 150px;
     margin-right: 10px; }
   .recipe-ingredient-form button {
     height: 25px;
@@ -568,19 +590,30 @@ input[type=password]:focus {
     display: flex;
     justify-content: center;
     align-items: center; }
+    .recipe-ingredient-form button:hover {
+      background-color: lightcoral; }
 
 .ingredients-box {
   min-height: 10px;
   padding-top: 10px;
   margin-left: 15px; }
+  .ingredients-box button {
+    border: none;
+    border-radius: 50%;
+    background-color: #515b5b;
+    color: white; }
+    .ingredients-box button:hover {
+      background-color: lightcoral; }
 
 .directions-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center; }
+  .directions-form p {
+    padding-right: 58px; }
   .directions-form input {
-    width: 450px;
+    width: 426px;
     margin-right: 10px; }
   .directions-form button {
     height: 25px;
@@ -593,15 +626,54 @@ input[type=password]:focus {
     display: flex;
     justify-content: center;
     align-items: center; }
+    .directions-form button:hover {
+      background-color: lightcoral; }
+
+.direction-box {
+  min-height: 10px;
+  padding-top: 10px;
+  margin-left: 15px; }
+  .direction-box button {
+    border: none;
+    border-radius: 50%;
+    background-color: #515b5b;
+    color: white; }
+    .direction-box button:hover {
+      background-color: lightcoral; }
 
 .recipe-notes-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: baseline; }
+  .recipe-notes-form p {
+    padding-right: 37px; }
   .recipe-notes-form textarea {
     max-height: 100px;
-    width: 450px; }
+    width: 474px; }
+
+.add-recipe-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 200px;
+  margin: auto; }
+  .add-recipe-buttons button {
+    height: 30px;
+    margin-top: 15px;
+    width: 60px;
+    font-size: 16px;
+    color: white;
+    background-color: #515b5b;
+    border: none;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .add-recipe-buttons button:hover {
+      background-color: lightcoral; }
 
 .category-page-container {
   display: flex;
@@ -650,6 +722,7 @@ input[type=password]:focus {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  box-shadow: 0px 1px 20px gray;
   flex-direction: row;
   flex-wrap: wrap;
   cursor: pointer;
@@ -683,6 +756,7 @@ input[type=password]:focus {
   margin: 20px;
   display: flex;
   justify-content: center;
+  box-shadow: 0px 1px 20px gray;
   align-items: baseline;
   flex-direction: row;
   position: relative;
@@ -755,6 +829,7 @@ input[type=password]:focus {
   height: 240px;
   width: 500px;
   position: fixed;
+  box-shadow: 0px 10px 15px gray;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -853,6 +928,7 @@ input[type=password]:focus {
   width: 500px;
   position: fixed;
   border-radius: 2px;
+  box-shadow: 0px 10px 15px gray;
   visibility: hidden;
   background-color: #ffffff;
   z-index: 101;

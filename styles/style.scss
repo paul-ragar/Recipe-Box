@@ -67,6 +67,9 @@ button {
   border: none;
   border-radius: 2px;
   align-self: center;
+  &:hover {
+    background-color: lightcoral;
+  }
 }
 .text-barOne {
   display: flex;
@@ -132,6 +135,9 @@ button {
   border: none;
   border-radius: 2px;
   align-self: center;
+  &:hover {
+    background-color: lightcoral;
+  }
 }
 
 
@@ -419,6 +425,7 @@ input[type=password]:focus {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  box-shadow: 0px 1px 20px gray;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 20px;
@@ -455,8 +462,10 @@ input[type=password]:focus {
   height: 240px;
   border-radius: 2px 2px 0px 0px;
   display: flex;
+  box-shadow: 0px 1px 20px gray;
   justify-content: center;
   align-items: baseline;
+  position: relative;
   flex-direction: row;
   flex-wrap: wrap;
   margin: 20px;
@@ -507,6 +516,7 @@ input[type=password]:focus {
   min-height: 80%;
   width: 70%;
   position: fixed;
+  box-shadow: 0px 10px 15px gray;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -520,7 +530,16 @@ input[type=password]:focus {
   left: 10px;
   bottom: 10px;
   position: absolute;
-  background-color: lightblue;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  h1 {
+    align-self: center;
+    font-size: 24px;
+  }
+  hr {
+
+  }
 }
 .pop-recipe-image {
   height: 400px;
@@ -562,10 +581,11 @@ input[type=password]:focus {
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  min-height: 80%;
-  max-height:  130%;
-  width: 70%;
-  position: fixed;
+  min-height: 520;
+  max-height:  auto;
+  width: 680px;
+  box-shadow: 0px 10px 15px gray;
+  position: absolute;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -599,8 +619,11 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  p {
+    padding-right: 34px;
+  }
   input {
-    width: 450px;
+    width: 474px;
   }
 }
 .image-url-form {
@@ -608,8 +631,11 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  p {
+    padding-right: 53px;
+  }
   input {
-    width: 450px;
+    width: 474px;
   }
 }
 .serving-size-form {
@@ -617,8 +643,11 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  p {
+    padding-right: 45px;
+  }
   input {
-    width: 450px;
+    width: 474px;
   }
 }
 .which-category-form {
@@ -633,7 +662,7 @@ input[type=password]:focus {
     margin-top: 7px;
     background-color: rgba(211, 211, 211, 1);
     height: 30px;
-    width: 450px;
+    width: 474px;
     text-indent: 10px;
   }
 }
@@ -642,8 +671,14 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  .p-ingredient {
+    padding-right: 50px;
+  }
+  .p-measurement {
+
+  }
   input {
-    width: 175px;
+    width: 150px;
     margin-right: 10px;
   }
   button {
@@ -657,20 +692,35 @@ input[type=password]:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover {
+      background-color: lightcoral;
+    }
   }
 }
 .ingredients-box {
   min-height: 10px;
   padding-top: 10px;
   margin-left: 15px;
+  button {
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(81, 91, 91);
+    color: white;
+    &:hover {
+      background-color: lightcoral;
+    }
+  }
 }
 .directions-form {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  p {
+    padding-right: 58px;
+  }
   input {
-    width: 450px;
+    width: 426px;
     margin-right: 10px;
   }
   button {
@@ -684,6 +734,23 @@ input[type=password]:focus {
     display: flex;
     justify-content: center;
     align-items: center;
+    &:hover {
+      background-color: lightcoral;
+    }
+  }
+}
+.direction-box {
+  min-height: 10px;
+  padding-top: 10px;
+  margin-left: 15px;
+  button {
+    border: none;
+    border-radius: 50%;
+    background-color: rgb(81, 91, 91);
+    color: white;
+    &:hover {
+      background-color: lightcoral;
+    }
   }
 }
 .recipe-notes-form {
@@ -691,10 +758,38 @@ input[type=password]:focus {
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: baseline;
+  p {
+    padding-right: 37px;
+  }
   textarea {
     // min-height: 20px;
     max-height: 100px;
-    width: 450px;
+    width: 474px;
+  }
+}
+.add-recipe-buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 200px;
+  margin: auto;
+  button {
+    height: 30px;
+    margin-top: 15px;
+    width: 60px;
+    font-size: 16px;
+    color: white;
+    background-color: rgb(81, 91, 91);
+    border: none;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      background-color: lightcoral;
+    }
   }
 }
 
@@ -761,6 +856,7 @@ input[type=password]:focus {
   display: flex;
   justify-content: center;
   align-items: baseline;
+  box-shadow: 0px 1px 20px gray;
   flex-direction: row;
   flex-wrap: wrap;
   cursor: pointer;
@@ -797,6 +893,7 @@ input[type=password]:focus {
   margin: 20px;
   display: flex;
   justify-content: center;
+  box-shadow: 0px 1px 20px gray;
   align-items: baseline;
   flex-direction: row;
   position: relative;
@@ -874,6 +971,7 @@ input[type=password]:focus {
   height: 240px;
   width: 500px;
   position: fixed;
+  box-shadow: 0px 10px 15px gray;
   border-radius: 2px;
   visibility: hidden;
   background-color: #ffffff;
@@ -977,6 +1075,7 @@ input[type=password]:focus {
   width: 500px;
   position: fixed;
   border-radius: 2px;
+  box-shadow: 0px 10px 15px gray;
   visibility: hidden;
   background-color: #ffffff;
   z-index: 101;

@@ -93,6 +93,8 @@ app.get('/recipes/:user_id', function(req, res) {
 
 app.post('/new_recipe', nodeController.new_recipe)
 
+app.delete('/delete_recipe/:recipe_id', nodeController.delete_recipe);
+
 /////////////////////////////////////////////// CATEGORY //
 
 app.get('/recipe_images/:category_id', nodeController.get_recipe_images);

@@ -28,11 +28,25 @@
     <div class="my-page-recipe" ng-repeat="recipe in recipes" ng-click="getDisplayRecipe(recipe.recipe_id)">
       <div style="background-image: url({{recipe.recipe_img}})" class="recipe-image">
       </div>
+      <button class="delete-category-box" id="deleteBox" ng-click="popDelete(); passId(recipe.recipe_id, recipe.recipe_name)" ng-show="isEditing">
+        <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           width="50px" height="50px" viewBox="0 0 612 612" style="enable-background:new 0 0 612 612;" xml:space="preserve">
+          <g>
+            <g id="cross">
+              <g>
+                <polygon fill="#ffffff" points="612,36.004 576.521,0.603 306,270.608 35.478,0.603 0,36.004 270.522,306.011 0,575.997 35.478,611.397
+                  306,341.411 576.521,611.397 612,575.997 341.459,306.011 			"/>
+              </g>
+            </g>
+          </g>
+        </svg>
+      </button>
       <div class="recipe-text-box">
         <strong class="recipeName">{{recipe.recipe_name}}</strong>
       </div>
 
     </div>
+
   </section>
 </section>
 
@@ -45,16 +59,24 @@
   </div>
   <div class="pop-recipe-data">
     <h1>{{displayRecipe.recipe_name}}</h1>
-    <p>{{displayRecipe.recipe_notes}}</p>
-    <p>{{displayRecipe.serving_size}}</p>
+    <p>Serves: {{displayRecipe.serving_size}}</p>
+    <br>
+    <p>INGREDIENTS</p>
+    <hr>
     <ul ng-repeat="ingredients in displayRecipe.ingredients track by $index">
-      {{displayRecipe.ingredients[$index].ingredient_name}}
       {{displayRecipe.ingredients[$index].measurements}}
+      {{displayRecipe.ingredients[$index].ingredient_name}}
     </ul>
     <br>
+    <p>DIRECTIONS</p>
+    <hr>
     <ul ng-repeat="direction in displayRecipe.directions track by $index">
-      {{displayRecipe.directions[$index].directions}}
+      {{$index + 1}}. {{displayRecipe.directions[$index].directions}}
     </ul>
+    <br>
+    <p>NOTES</p>
+    <hr>
+    <p>{{displayRecipe.recipe_notes}}</p>
 
   </div>
   <div class="pop-recipe-image" style="background-image: url({{displayRecipe.recipe_img}})">
@@ -63,6 +85,24 @@
 </div>
 <!-- ********************** -->
 
+<section class="pop-up-delete" ng-click="closeDeleteCategory()">
+
+</section>
+
+<form class="verify-delete-container">
+  <p class="delete-category-text">
+    Are you sure you want to delete the category, "{{recipeName}}"?
+  </p>
+  <div class="verify-button-container">
+    <button class="verify-buttons"type="button" name="button" ng-click="closeDeleteCategory()">Cancel</button>
+    <button  class="verify-buttons"type="submit" name="button" id="yes-delete" ng-click="deleteRecipe(recipe.recipe_id); getCurrentUser()">Yes</button>
+  </div>
+
+  <div class="x-close" ng-click="closeDeleteCategory()">
+    X
+  </div>
+
+</form>
 
 
 
@@ -100,14 +140,14 @@
   </div>
   <hr>
   <div class="recipe-ingredient-form" >
-    <p>Ingredients</p>
+    <p class="p-ingredient">Ingredients</p>
     <input class="form-ingredients" id="ingredient-input" type="text" name="name" placeholder="Spinach" value="" ng-model="newIngredient" tabindex="5">
-    <p>Measurement</p>
+    <p class="p-measurement">Measurement</p>
     <input class="form-measurement" type="text" name="name" value="" placeholder="4 cups" ng-model="newMeasurement" tabindex="6">
     <button type="submit" name="button" ng-click="ingredientArray(newIngredient, newMeasurement)">Add</button>
   </div>
   <div class="ingredients-box">
-    <p ng-repeat="ingredient in ingredients track by $index">{{ingredient}}: {{measurements[$index]}} <button ng-click="deleteIngredient($index)" type="button" name="button">X</button></p>
+    <p ng-repeat="ingredient in ingredients track by $index"><button ng-click="deleteIngredient($index)" type="button" name="button">X</button> &nbsp {{ingredient}}: &nbsp {{measurements[$index]}} </p>
   </div>
   <hr>
   <div class="directions-form">
@@ -116,7 +156,7 @@
     <button type="submit" name="button" ng-click="directionArray(newDirection)">Add</button>
   </div>
   <div class="direction-box">
-    <p ng-repeat="direction in directions track by $index">Step {{$index + 1}}: {{direction}} <button type="button" name="button" ng-click="deleteDirection($index)">X</button></p>
+    <p ng-repeat="direction in directions track by $index"><button type="button" name="button" ng-click="deleteDirection($index)">X</button> &nbsp {{$index + 1}}: &nbsp {{direction}} </p>
   </div>
   <hr>
   <div class="recipe-notes-form">

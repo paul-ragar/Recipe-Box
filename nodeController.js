@@ -24,6 +24,11 @@ var db = app.get('db');
         res.status(200).send(deleted_category);
       });
     },
+    delete_recipe: function(req, res, next) {
+      db.recipes.delete_recipe([req.params.recipe_id], function(err, deleted_recipe) {
+        res.status(200).send(deleted_recipe);
+      });
+    },
     put_category: function(req, res, next) {
       db.category.put_category([req.params.category_id, req.body.category_name], function(err, updated_category) {
         res.status(200).send(updated_category);
