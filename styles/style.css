@@ -448,14 +448,35 @@ input[type=password]:focus {
   width: 43%;
   top: 10px;
   left: 10px;
-  bottom: 10px;
-  position: absolute;
+  margin-top: 65px;
+  position: fixed;
   display: flex;
   justify-content: center;
   flex-direction: column; }
   .pop-recipe-data h1 {
     align-self: center;
     font-size: 24px; }
+
+.ingredients-div {
+  display: flex;
+  flex-direction: row;
+  min-height: 140px;
+  margin-top: 7px;
+  margin-left: 5px;
+  margin-bottom: 7px; }
+  .ingredients-div .measurement-container {
+    display: flex;
+    flex-direction: column; }
+  .ingredients-div .ingredient-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px; }
+
+.directions-div {
+  margin-top: 7px; }
+
+.notes-div {
+  margin-top: 7px; }
 
 .pop-recipe-image {
   height: 400px;
@@ -1024,7 +1045,7 @@ ul.drop-down-menu {
   padding: 0; }
   ul.drop-down-menu li.li-options {
     height: 35px;
-    background: black;
+    background-color: rgba(0, 0, 0, 0.9);
     color: white;
     font-family: "Open Sans", sans-serif; }
     ul.drop-down-menu li.li-options:hover {

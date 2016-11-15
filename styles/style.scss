@@ -27,9 +27,6 @@ button {
 
 
 
-
-
-
 // *********************** HOME ***********************
 
 .home-imgOne {
@@ -528,8 +525,8 @@ input[type=password]:focus {
   width: 43%;
   top: 10px;
   left: 10px;
-  bottom: 10px;
-  position: absolute;
+  margin-top: 65px;
+  position: fixed;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -537,9 +534,29 @@ input[type=password]:focus {
     align-self: center;
     font-size: 24px;
   }
-  hr {
-
+}
+.ingredients-div {
+  display: flex;
+  flex-direction: row;
+  min-height: 140px;
+  margin-top: 7px;
+  margin-left: 5px;
+  margin-bottom: 7px;
+  .measurement-container {
+    display: flex;
+    flex-direction: column;
   }
+  .ingredient-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+  }
+}
+.directions-div {
+  margin-top: 7px;
+}
+.notes-div {
+  margin-top: 7px;
 }
 .pop-recipe-image {
   height: 400px;
@@ -1190,7 +1207,7 @@ ul.drop-down-menu {
 
   li.li-options {
     height: 35px;
-    background: black;
+    background-color: rgba(0, 0, 0, .9);
     color: white;
     font-family: $osFont;
     &:hover {

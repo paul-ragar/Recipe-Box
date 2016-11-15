@@ -59,24 +59,36 @@
   </div>
   <div class="pop-recipe-data">
     <h1>{{displayRecipe.recipe_name}}</h1>
+    <br>
     <p>Serves: {{displayRecipe.serving_size}}</p>
     <br>
     <p>INGREDIENTS</p>
-    <hr>
-    <ul ng-repeat="ingredients in displayRecipe.ingredients track by $index">
-      {{displayRecipe.ingredients[$index].measurements}}
-      {{displayRecipe.ingredients[$index].ingredient_name}}
-    </ul>
+    <div class="ingredients-div">
+      <div class="measurment-container">
+        <ul ng-repeat="measurement in displayRecipe.ingredients track by $index">
+          {{displayRecipe.ingredients[$index].measurements}}
+        </ul>
+      </div>
+      <div class="ingredient-container">
+        <ul ng-repeat="ingredients in displayRecipe.ingredients track by $index">
+
+          {{displayRecipe.ingredients[$index].ingredient_name}}
+        </ul>
+      </div>
+    </div>
     <br>
     <p>DIRECTIONS</p>
-    <hr>
-    <ul ng-repeat="direction in displayRecipe.directions track by $index">
-      {{$index + 1}}. {{displayRecipe.directions[$index].directions}}
-    </ul>
+    <div class="directions-div">
+      <ul ng-repeat="direction in displayRecipe.directions track by $index">
+        {{$index + 1}}. {{displayRecipe.directions[$index].directions}}
+      </ul>
+    </div>
+
     <br>
     <p>NOTES</p>
-    <hr>
-    <p>{{displayRecipe.recipe_notes}}</p>
+    <div class="notes-div">
+      <p>{{displayRecipe.recipe_notes}}</p>
+    </div>
 
   </div>
   <div class="pop-recipe-image" style="background-image: url({{displayRecipe.recipe_img}})">

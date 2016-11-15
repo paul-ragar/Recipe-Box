@@ -98,9 +98,9 @@ angular.module('myApp').controller('my-recipesCtrl', function(mainService, $scop
             })
           })
         });
-
       });
     };
+    
   ////////////////////////////
   $scope.ingredients = [];
   $scope.measurements = [];
