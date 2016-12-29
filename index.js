@@ -22,7 +22,7 @@ var massiveServer = massive.connectSync({
 app.set('db', massiveServer);
 var db = app.get('db');
 
-var port = 3333;
+var port = 80;
 var nodeController = require('./nodeController.js');
 
 //CONTROLLERS//
